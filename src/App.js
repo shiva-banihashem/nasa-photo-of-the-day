@@ -13,12 +13,14 @@ function App() {
   var day = todaydate.getDate().toString();
   day = day.length > 1 ? day : '0' + day;
   let today =  year + '-' + month + '-' + day 
-  console.log('today:'+today);
+  
+  // reformatting date for display
   let ArrayDate= today.split('-');
   let formatedDate = ArrayDate[1]+ '-'+ArrayDate[2]+'-'+ArrayDate[0];
   const [infoState, setInfo] = useState({})
   const [date, setDate] = useState(today);
   const [errorState, setError]= useState('');
+
   const [date2,setDate2]=useState(formatedDate)
   console.log(infoState);
   
@@ -27,7 +29,7 @@ function App() {
   useEffect(() => {
     // Make a request for a user with a given ID
     console.log('in effect:'+date);
-    // axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${date}`)
+    
     axios.get(`https://api.nasa.gov/planetary/apod?api_key=y9SoVMh5FCAQaX2oBYC4PrP69Kq6R2f90OhlpC5x&date=${date}`)
       .then( result =>{
         // handle success
@@ -51,24 +53,23 @@ function App() {
   return (
     <div className="App">
     <header className="App-header">
-      <img className='App-logo' src={logo} alt= "NASA logo"></img>
-      <h1>NASA's Picture of the Day on {date2}</h1>
+      <div className="heading">
+        <img className='App-logo' src={logo} alt= "NASA logo"></img>
+        <h1>NASA's Picture of the Day for {date2}</h1>
+      </div>
       <h2>Select a date to change the picture of the day:</h2>
-      <form>Date:
+      <form>
+      <label for="date">Date</label>
        <input onChange={(event) => {
-      setDate(event.target.value);
-       ArrayDate= event.target.value.split('-');
-        formatedDate = ArrayDate[1]+ '-'+ArrayDate[2]+'-'+ArrayDate[0];
-        setDate2(formatedDate);
+         setDate(event.target.value);
+         ArrayDate= event.target.value.split('-');
+         formatedDate = ArrayDate[1]+ '-'+ArrayDate[2]+'-'+ArrayDate[0];
+         setDate2(formatedDate);
       }
-       } type={"date"} max={today} ></input>
+       } id='date' type={"date"} max={today} ></input>
        
      </form>
     </header>
-
-     
-      
-      
       <DisplayInfo 
           title={infoState.title}
           url={infoState.url}
