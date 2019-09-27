@@ -3,6 +3,35 @@ import axios from 'axios';
 import "./App.css";
 import DisplayInfo from './components/DisplayInfo.js'
 import logo from  './img/nasa-logo.png';
+import styled from 'styled-components';
+
+const Header = styled.header`
+background-color:darkblue;
+  min-height: 60vh;
+  
+  display: flex;
+  width:100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+`;
+
+const Heading = styled.div`
+display:flex;
+position:relative;
+`;
+
+const Input = styled.input`
+  color: darkblue;
+  background-color:white;
+  padding:5px 5px;
+  border-radius:5px;
+  box-sizing: border-box;
+  border: 2px solid red; 
+`;
+
 function App() {
   let todaydate = new Date();
   var year = todaydate.getFullYear();
@@ -49,38 +78,67 @@ function App() {
       })
   },[date])
 
-
   return (
-    <div className="App">
-    <header className="App-header">
-      <div className="heading">
+    <div>
+    <Header>
+      <Heading>
         <img className='App-logo' src={logo} alt= "NASA logo"></img>
         <h1>NASA's Picture of the Day for {date2}</h1>
-      </div>
+      </Heading>
       <h2>Select a date to change the picture of the day:</h2>
       <form>
-      <label for="date">Date</label>
-       <input onChange={(event) => {
+      <label >Date</label>
+       <Input onChange={(event) => {
          setDate(event.target.value);
          ArrayDate= event.target.value.split('-');
          formatedDate = ArrayDate[1]+ '-'+ArrayDate[2]+'-'+ArrayDate[0];
          setDate2(formatedDate);
       }
-       } id='date' type={"date"} max={today} ></input>
+       } type={"date"} max={today} ></Input>
        
      </form>
-    </header>
+    </Header>
       <DisplayInfo 
           title={infoState.title}
           url={infoState.url}
           explanation={infoState.explanation}
           date={infoState.date}
           error={errorState}
-        /> 
-     
-     
+        />     
     </div>
   );
+  // return (
+  //   <div>
+  //   <header className="App-header">
+  //     <div className="heading">
+  //       <img className='App-logo' src={logo} alt= "NASA logo"></img>
+  //       <h1>NASA's Picture of the Day for {date2}</h1>
+  //     </div>
+  //     <h2>Select a date to change the picture of the day:</h2>
+  //     <form>
+  //     <label for="date">Date</label>
+  //      <input onChange={(event) => {
+  //        setDate(event.target.value);
+  //        ArrayDate= event.target.value.split('-');
+  //        formatedDate = ArrayDate[1]+ '-'+ArrayDate[2]+'-'+ArrayDate[0];
+  //        setDate2(formatedDate);
+  //     }
+  //      } id='date' type={"date"} max={today} ></input>
+       
+  //    </form>
+  //   </header>
+  //     <DisplayInfo 
+  //         title={infoState.title}
+  //         url={infoState.url}
+  //         explanation={infoState.explanation}
+  //         date={infoState.date}
+  //         error={errorState}
+  //       /> 
+     
+     
+  //   </div>
+  // );
+  
 }
 
 export default App;
