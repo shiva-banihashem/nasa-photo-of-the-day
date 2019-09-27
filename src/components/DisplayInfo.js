@@ -2,6 +2,8 @@
 import React from "react";
 import styled from 'styled-components';
 
+
+
 const DisplayCard = styled.div`
 width: 98%;
 height: 100%;
@@ -22,6 +24,8 @@ const Image = styled.img`
 border-radius:2%;
 `;
 
+
+
 function DisplayInfo(props){
   if (!props.title && props.error ) return <ErrorMsg>Server Error: {props.error}</ErrorMsg>;
   else 
@@ -36,19 +40,7 @@ function DisplayInfo(props){
         <Image src={props.url} alt="nasa picture"></Image>
       </DisplayCard>
   )
-  // return (
-  //   <div >
-      
-  //     <div className = "display-info">
-  //      <div>
-  //      <h2>{props.title} </h2>
-  //      <p>{props.explanation}</p>
-  //      </div>
-  //      <img id= 'picture' src={props.url} alt="nasa picture"/>
-  //     </div>          
-  //   </div>
-  // )
-
+  
 }
 
 export default DisplayInfo;

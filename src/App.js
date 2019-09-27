@@ -3,7 +3,7 @@ import axios from 'axios';
 import "./App.css";
 import DisplayInfo from './components/DisplayInfo.js'
 import logo from  './img/nasa-logo.png';
-import styled from 'styled-components';
+import styled,{ keyframes } from 'styled-components';
 
 const Header = styled.header`
 background-color:darkblue;
@@ -31,7 +31,21 @@ const Input = styled.input`
   box-sizing: border-box;
   border: 2px solid red; 
 `;
-
+const rotate = keyframes`
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}`;
+const AppLogo =styled.img`{
+  animation: ${rotate} infinite 20s linear;
+  height: 20vmin;
+  margin-left:0px;
+  position:absolute;
+  top:-40px;
+  left:-300px;
+}`;
 function App() {
   let todaydate = new Date();
   var year = todaydate.getFullYear();
@@ -82,7 +96,7 @@ function App() {
     <div>
     <Header>
       <Heading>
-        <img className='App-logo' src={logo} alt= "NASA logo"></img>
+        <AppLogo src={logo} alt= "NASA logo"></AppLogo>
         <h1>NASA's Picture of the Day for {date2}</h1>
       </Heading>
       <h2>Select a date to change the picture of the day:</h2>
@@ -107,37 +121,6 @@ function App() {
         />     
     </div>
   );
-  // return (
-  //   <div>
-  //   <header className="App-header">
-  //     <div className="heading">
-  //       <img className='App-logo' src={logo} alt= "NASA logo"></img>
-  //       <h1>NASA's Picture of the Day for {date2}</h1>
-  //     </div>
-  //     <h2>Select a date to change the picture of the day:</h2>
-  //     <form>
-  //     <label for="date">Date</label>
-  //      <input onChange={(event) => {
-  //        setDate(event.target.value);
-  //        ArrayDate= event.target.value.split('-');
-  //        formatedDate = ArrayDate[1]+ '-'+ArrayDate[2]+'-'+ArrayDate[0];
-  //        setDate2(formatedDate);
-  //     }
-  //      } id='date' type={"date"} max={today} ></input>
-       
-  //    </form>
-  //   </header>
-  //     <DisplayInfo 
-  //         title={infoState.title}
-  //         url={infoState.url}
-  //         explanation={infoState.explanation}
-  //         date={infoState.date}
-  //         error={errorState}
-  //       /> 
-     
-     
-  //   </div>
-  // );
   
 }
 
