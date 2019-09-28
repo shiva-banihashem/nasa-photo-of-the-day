@@ -1,6 +1,7 @@
 
 import React from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
+
 
 
 
@@ -22,6 +23,8 @@ color: red`;
 
 const Image = styled.img`
 border-radius:2%;
+height:70vh;
+width: 70vw;
 `;
 
 

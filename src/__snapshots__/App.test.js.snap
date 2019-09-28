@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a snapshot 1`] = `
+<div>
+  <header
+    className="sc-ifAKCX eZTVeW"
+  >
+    <div
+      className="sc-EHOje isFkSd"
+    >
+      <img
+        alt="NASA logo"
+        className="sc-gzVnrw dIOluq"
+        src="nasa-logo.png"
+      />
+      <h1>
+        NASA's Picture of the Day for 
+        09-28-2019
+      </h1>
+    </div>
+    <h2>
+      Select a date to change the picture of the day:
+    </h2>
+    <form>
+      <label>
+        Date
+      </label>
+      <input
+        className="sc-bZQynM kiHfPI"
+        max="2019-09-28"
+        onChange={[Function]}
+        type="date"
+      />
+    </form>
+  </header>
+  <h3>
+    Loading...
+  </h3>
+</div>
+`;

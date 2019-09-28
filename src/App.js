@@ -112,13 +112,13 @@ function App() {
        
      </form>
     </Header>
-      <DisplayInfo 
+      <DisplayInfo
           title={infoState.title}
           url={infoState.url}
           explanation={infoState.explanation}
           date={infoState.date}
-          error={errorState}
-        />     
+          error={errorState}>
+          </DisplayInfo>     
     </div>
   );
   
